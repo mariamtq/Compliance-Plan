@@ -1,1465 +1,282 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3-Year Integrated Compliance Assurance Plan — Tier 1 NZ Bank</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,wght@0,300;0,600;0,700;1,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0d1117;
-    --surface: #161b24;
-    --surface2: #1e2535;
-    --surface3: #252d3d;
-    --border: #2a3347;
-    --border-light: #3a4560;
-    --text-primary: #e8edf5;
-    --text-secondary: #8b96b0;
-    --text-muted: #5a6480;
-    --amber: #f0a500;
-    --amber-dim: rgba(240,165,0,0.15);
-    --teal: #2dd4bf;
-    --teal-dim: rgba(45,212,191,0.12);
-    --rose: #f43f5e;
-    --rose-dim: rgba(244,63,94,0.12);
-    --violet: #8b5cf6;
-    --violet-dim: rgba(139,92,246,0.12);
-    --sky: #38bdf8;
-    --sky-dim: rgba(56,189,248,0.12);
-    --green: #4ade80;
-    --green-dim: rgba(74,222,128,0.12);
-    --orange: #fb923c;
-    --orange-dim: rgba(251,146,60,0.12);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3-Year Integrated Compliance Assurance Plan — Tier 1 NZ Bank</title>
 
-```
-/* Line of Defence colours */
---l1: #f0a500;
---l2: #2dd4bf;
---l3: #8b5cf6;
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" relroot {
+      --bg:#0a0c10; --s1:#111418; --s2:#181c23; --s3:#1f2430; --s4:#252b38;
+      --border:#2e3547; --border2:#3d4a60;
+      --gold:#f5c842; --teal:#00d4aa; --rose:#ff4d6d; --sky:#38b2f5;
+      --violet:#a78bfa; --lime:#84cc16; --orange:#f97316; --cyan:#22d3ee;
+      --white:#fff; --off-white:#e8edf5; --mid:#9aa5bc; --dim:#5e6e8a;
 
-/* Assurance type colours */
---ct: #38bdf8;   /* controls testing */
---att: #4ade80;  /* attestation */
---tr: #fb923c;   /* thematic review */
---aud: #f43f5e;  /* audit */
---mon: #c084fc;  /* monitoring */
---crev: #facc15; /* compliance review */
---reg: #67e8f9;  /* regulatory engagement */
-```
+      --l1c:#f5c842; --l2c:#00d4aa; --l3c:#a78bfa;
+      --ct:#38b2f5; --att:#84cc16; --tr:#f97316; --aud:#ff4d6d;
+      --mon:#a78bfa; --cr:#22d3ee; --reg:#f5c842;
+    }
 
-}
+    *,*::before,*::after{
+      box-sizing:border-box;margin:0;padding:0;
+    }
 
-- { box-sizing: border-box; margin: 0; padding: 0; }
+    body{
+      background:var(--bg);
+      color:var(--off-white);
+      font-family:'IBM Plex Sans',sans-serif;
+      font-size:14px;
+      line-height:1.6;
+    }
 
-body {
-background: var(–bg);
-color: var(–text-primary);
-font-family: ‘DM Sans’, sans-serif;
-font-size: 13px;
-line-height: 1.5;
-min-height: 100vh;
-}
+    /* ───── Masthead ───── */
+    .masthead{
+      background:var(--s1);
+      border-bottom:3px solid var(--gold);
+      padding:40px 48px 32px;
+    }
+    .masthead-kicker{
+      font-family:'IBM Plex Mono',monospace;
+      font-size:11px;
+      letter-spacing:.25em;
+      text-transform:uppercase;
+      color:var(--gold);
+      margin-bottom:12px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .masthead-kicker::after{
+      content:'';
+      flex:1;
+      height:1px;
+      background:var(--border);
+    }
+    .masthead-title{
+      font-family:'Syne',sans-serif;
+      font-size:52px;
+      font-weight:800;
+      line-height:1;
+    }
+    .masthead-title span{color:var(--gold);}
+    .masthead-sub{color:var(--mid);font-size:16px;margin:16px 0;}
+    .masthead-chips{display:flex;gap:10px;flex-wrap:wrap;}
+    .chip{
+      font-family:'IBM Plex Mono',monospace;
+      font-size:11px;
+      padding:6px 14px;
+      border:1px solid var(--border2);
+      color:var(--mid);
+      border-radius:3px;
+      background:var(--s2);
+    }
+    .chip-gold{color:var(--gold);border-color:var(--gold);}
+    .chip-teal{color:var(--teal);border-color:var(--teal);}
+    .chip-rose{color:var(--rose);border-color:var(--rose);font-weight:600;}
 
-/* ── HEADER ── */
-.header {
-background: var(–surface);
-border-bottom: 1px solid var(–border);
-padding: 28px 40px 20px;
-position: sticky;
-top: 0;
-z-index: 100;
-backdrop-filter: blur(8px);
-}
-.header-inner {
-display: flex;
-align-items: flex-end;
-justify-content: space-between;
-gap: 24px;
-}
-.header-left {}
-.eyebrow {
-font-family: ‘DM Mono’, monospace;
-font-size: 10px;
-letter-spacing: 0.18em;
-text-transform: uppercase;
-color: var(–amber);
-margin-bottom: 6px;
-}
-.header-title {
-font-family: ‘Fraunces’, serif;
-font-size: 26px;
-font-weight: 600;
-color: var(–text-primary);
-line-height: 1.1;
-}
-.header-sub {
-font-size: 12px;
-color: var(–text-secondary);
-margin-top: 4px;
-}
-.header-meta {
-display: flex;
-gap: 20px;
-align-items: center;
-}
-.meta-chip {
-font-family: ‘DM Mono’, monospace;
-font-size: 10px;
-letter-spacing: 0.1em;
-color: var(–text-secondary);
-border: 1px solid var(–border);
-padding: 4px 10px;
-border-radius: 3px;
-}
-.status-live {
-display: flex;
-align-items: center;
-gap: 6px;
-font-family: ‘DM Mono’, monospace;
-font-size: 10px;
-color: var(–teal);
-letter-spacing: 0.1em;
-}
-.pulse {
-width: 6px; height: 6px;
-border-radius: 50%;
-background: var(–teal);
-animation: pulse 2s infinite;
-}
-@keyframes pulse {
-0%,100%{opacity:1} 50%{opacity:0.3}
-}
+    /* ───── Nav ───── */
+    .nav{
+      background:var(--s1);
+      border-bottom:1px solid var(--border);
+      padding:0 48px;
+      display:flex;
+      position:sticky;
+      top:0;
+      z-index:200;
+    }
+    .nav-tab{
+      padding:16px 24px;
+      font-family:'IBM Plex Mono',monospace;
+      font-size:11px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--dim);
+      cursor:pointer;
+      border-bottom:3px solid transparent;
+    }
+    .nav-tab.active{
+      color:var(--gold);
+      border-bottom-color:var(--gold);
+    }
 
-/* ── LAYOUT ── */
-.main {
-padding: 32px 40px 60px;
-display: flex;
-flex-direction: column;
-gap: 32px;
-}
+    /* ───── Main ───── */
+    .main{padding:40px 48px 80px;}
+    .view{display:none;}
+    .view.active{display:block;}
 
-/* ── LEGEND ── */
-.legend-bar {
-display: flex;
-gap: 32px;
-align-items: flex-start;
-flex-wrap: wrap;
-}
-.legend-section {
-display: flex;
-flex-direction: column;
-gap: 8px;
-}
-.legend-label {
-font-family: ‘DM Mono’, monospace;
-font-size: 9px;
-letter-spacing: 0.2em;
-text-transform: uppercase;
-color: var(–text-muted);
-border-bottom: 1px solid var(–border);
-padding-bottom: 4px;
-margin-bottom: 4px;
-}
-.legend-items {
-display: flex;
-gap: 16px;
-flex-wrap: wrap;
-}
-.legend-item {
-display: flex;
-align-items: center;
-gap: 6px;
-font-size: 11px;
-color: var(–text-secondary);
-}
-.legend-dot {
-width: 10px; height: 10px;
-border-radius: 2px;
-flex-shrink: 0;
-}
-.legend-line {
-width: 20px; height: 3px;
-border-radius: 2px;
-flex-shrink: 0;
-}
+    .section-title{
+      font-family:'Syne',sans-serif;
+      font-size:32px;
+      font-weight:800;
+      margin-bottom:6px;
+    }
+    .section-sub{color:var(--mid);margin-bottom:28px;}
 
-/* ── SECTION HEADER ── */
-.section-hd {
-display: flex;
-align-items: center;
-gap: 12px;
-margin-bottom: 16px;
-}
-.section-title {
-font-family: ‘Fraunces’, serif;
-font-size: 15px;
-font-weight: 600;
-color: var(–text-primary);
-}
-.section-rule {
-flex: 1;
-height: 1px;
-background: var(–border);
-}
-.section-badge {
-font-family: ‘DM Mono’, monospace;
-font-size: 9px;
-letter-spacing: 0.15em;
-text-transform: uppercase;
-color: var(–text-muted);
-border: 1px solid var(–border);
-padding: 3px 8px;
-border-radius: 2px;
-}
+    /* ───── Regime Card ───── */
+    .regime-card{
+      background:var(--s2);
+      border:1px solid var(--border);
+      border-radius:10px;
+      margin-bottom:16px;
+      overflow:hidden;
+      animation:fadeUp .3s ease both;
+    }
+    .regime-card-header{
+      background:var(--s3);
+      padding:18px 24px;
+      display:flex;
+      gap:16px;
+      cursor:pointer;
+      border-bottom:1px solid var(--border);
+      align-items:center;
+    }
+    .regime-card-header:hover{background:var(--s4);}
+    .regime-acronym{
+      font-family:'Syne',sans-serif;
+      font-size:20px;
+      font-weight:800;
+      min-width:110px;
+    }
+    .regime-fullname{color:var(--mid);flex:1;font-size:13px;}
+    .regime-regulator{
+      font-family:'IBM Plex Mono',monospace;
+      font-size:10px;
+      color:var(--dim);
+      border:1px solid var(--border);
+      padding:4px 8px;
+      border-radius:3px;
+    }
+    .regime-risk{
+      font-family:'IBM Plex Mono',monospace;
+      font-size:10px;
+      letter-spacing:.15em;
+      padding:4px 10px;
+      border-radius:3px;
+      font-weight:600;
+    }
+    .risk-critical{color:var(--rose);border:1px solid var(--rose);}
+    .risk-high{color:var(--orange);border:1px solid var(--orange);}
+    .risk-medium{color:var(--sky);border:1px solid var(--sky);}
+    .chevron-icon{color:var(--dim);}
+    .regime-card.collapsed .regime-body{display:none;}
+    .regime-card.collapsed .chevron-icon{transform:rotate(-90deg);}
 
-/* ── MAIN GANTT TABLE ── */
-.plan-container {
-background: var(–surface);
-border: 1px solid var(–border);
-border-radius: 8px;
-overflow: hidden;
-}
+    /* ───── Grid ───── */
+    .qgrid-wrap{overflow-x:auto;}
+    .qgrid{display:grid;min-width:1100px;}
 
-.plan-header-row {
-display: grid;
-grid-template-columns: 220px 90px repeat(36, 1fr);
-background: var(–surface2);
-border-bottom: 2px solid var(–border);
-position: sticky;
-top: 90px;
-z-index: 50;
-}
-.ph-cell {
-padding: 8px 6px;
-font-family: ‘DM Mono’, monospace;
-font-size: 9px;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-color: var(–text-muted);
-border-right: 1px solid var(–border);
-text-align: center;
-}
-.ph-cell.year-header {
-background: var(–surface3);
-color: var(–text-secondary);
-font-size: 10px;
-font-weight: 500;
-letter-spacing: 0.15em;
-}
-.ph-cell.legislation { text-align: left; }
+    .lod-row{
+      display:grid;
+      grid-template-columns:160px repeat(12,1fr);
+      border-bottom:1px solid var(--border);
+    }
+    .lod-label-cell{
+      padding:12px 16px;
+      border-right:1px solid var(--border);
+    }
+    .lod-name{
+      font-family:'Syne',sans-serif;
+      font-weight:800;
+    }
+    .lod-desc{font-size:10px;color:var(--dim);}
 
-.year-span-header {
-display: grid;
-grid-template-columns: 220px 90px repeat(12,1fr) repeat(12,1fr) repeat(12,1fr);
-background: var(–surface3);
-border-bottom: 1px solid var(–border);
-}
-.ysh-cell {
-padding: 6px 8px;
-font-family: ‘DM Mono’, monospace;
-font-size: 9px;
-letter-spacing: 0.12em;
-text-transform: uppercase;
-color: var(–text-secondary);
-text-align: center;
-border-right: 1px solid var(–border);
-}
-.ysh-cell.year-label {
-color: var(–amber);
-font-weight: 500;
-font-size: 10px;
-border-right: 2px solid var(–border-light);
-}
+    .quarter-cell{
+      padding:6px;
+      border-right:1px solid var(--border);
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
 
-/* Quarter sub-headers */
-.quarter-header-row {
-display: grid;
-grid-template-columns: 220px 90px repeat(36, 1fr);
-background: var(–surface2);
-border-bottom: 1px solid var(–border);
-}
-.qh-cell {
-padding: 5px 2px;
-font-family: ‘DM Mono’, monospace;
-font-size: 8px;
-letter-spacing: 0.08em;
-color: var(–text-muted);
-text-align: center;
-border-right: 1px solid var(–border);
-}
-.qh-cell.q1 { color: #60a5fa; }
-.qh-cell.q2 { color: #34d399; }
-.qh-cell.q3 { color: #f59e0b; }
-.qh-cell.q4 { color: #f87171; }
+    .activity-pill{
+      font-family:'IBM Plex Mono',monospace;
+      font-size:10px;
+      padding:3px 6px;
+      border-left:2px solid;
+      border-radius:2px;
+    }
+    .pill-ct{border-color:var(--ct);background:rgba(56,178,245,.15);}
+    .pill-att{border-color:var(--att);background:rgba(132,204,22,.15);}
+    .pill-tr{border-color:var(--tr);background:rgba(249,115,22,.15);}
+    .pill-aud{border-color:var(--aud);background:rgba(255,77,109,.15);}
+    .pill-mon{border-color:var(--mon);background:rgba(167,139,250,.15);}
+    .pill-cr{border-color:var(--cr);background:rgba(34,211,238,.15);}
+    .pill-reg{border-color:var(--reg);background:rgba(245,200,66,.15);}
 
-/* ── ROWS ── */
-.legislation-group {}
-.leg-header-row {
-display: grid;
-grid-template-columns: 220px 90px repeat(36, 1fr);
-background: var(–surface2);
-border-bottom: 1px solid var(–border);
-cursor: pointer;
-transition: background 0.15s;
-}
-.leg-header-row:hover { background: var(–surface3); }
+    /* ───── Footer ───── */
+    .footer{
+      background:var(--s1);
+      border-top:1px solid var(--border);
+      padding:20px 48px;
+      display:flex;
+      justify-content:space-between;
+      font-family:'IBM Plex Mono',monospace;
+      font-size:10px;
+      color:var(--dim);
+    }
 
-.leg-name-cell {
-padding: 10px 14px;
-display: flex;
-align-items: center;
-gap: 8px;
-border-right: 1px solid var(–border);
-}
-.leg-tag {
-font-family: ‘DM Mono’, monospace;
-font-size: 10px;
-font-weight: 500;
-color: var(–text-primary);
-}
-.leg-full {
-font-size: 10px;
-color: var(–text-muted);
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-}
-.risk-cell {
-padding: 10px 8px;
-display: flex;
-align-items: center;
-justify-content: center;
-border-right: 2px solid var(–border-light);
-}
-.risk-badge {
-font-family: ‘DM Mono’, monospace;
-font-size: 9px;
-padding: 2px 7px;
-border-radius: 2px;
-font-weight: 500;
-}
-.risk-critical { background: rgba(244,63,94,0.2); color: var(–rose); }
-.risk-high     { background: rgba(251,146,60,0.2); color: var(–orange); }
-.risk-medium   { background: rgba(250,204,21,0.2); color: #facc15; }
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(14px);}
+      to{opacity:1;transform:none;}
+    }
 
-/* Assurance activity rows */
-.activity-row {
-display: grid;
-grid-template-columns: 220px 90px repeat(36, 1fr);
-border-bottom: 1px solid rgba(42,51,71,0.6);
-min-height: 34px;
-transition: background 0.1s;
-}
-.activity-row:hover { background: rgba(30,37,53,0.5); }
-.activity-row:last-child { border-bottom: none; }
-
-.act-label-cell {
-padding: 6px 14px 6px 28px;
-display: flex;
-align-items: center;
-gap: 6px;
-border-right: 1px solid var(–border);
-}
-.lod-indicator {
-width: 3px;
-border-radius: 1px;
-align-self: stretch;
-flex-shrink: 0;
-min-height: 16px;
-}
-.lod-1 { background: var(–l1); }
-.lod-2 { background: var(–l2); }
-.lod-3 { background: var(–l3); }
-
-.act-name {
-font-size: 11px;
-color: var(–text-secondary);
-flex: 1;
-}
-.act-type-badge {
-font-family: ‘DM Mono’, monospace;
-font-size: 8px;
-padding: 1px 5px;
-border-radius: 2px;
-white-space: nowrap;
-flex-shrink: 0;
-}
-
-.act-lod-cell {
-padding: 6px 8px;
-display: flex;
-align-items: center;
-justify-content: center;
-border-right: 2px solid var(–border-light);
-font-family: ‘DM Mono’, monospace;
-font-size: 9px;
-color: var(–text-muted);
-}
-.lod-tag {
-padding: 2px 5px;
-border-radius: 2px;
-font-size: 8px;
-}
-.lod-tag-1 { background: rgba(240,165,0,0.15); color: var(–l1); }
-.lod-tag-2 { background: rgba(45,212,191,0.12); color: var(–l2); }
-.lod-tag-3 { background: rgba(139,92,246,0.12); color: var(–l3); }
-
-.gantt-cell {
-border-right: 1px solid rgba(42,51,71,0.4);
-padding: 4px 2px;
-display: flex;
-align-items: center;
-position: relative;
-}
-.gantt-cell.month-end { border-right: 2px solid var(–border); }
-.gantt-cell.year-end  { border-right: 2px solid var(–border-light); }
-
-.bar {
-height: 14px;
-border-radius: 2px;
-width: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-font-family: ‘DM Mono’, monospace;
-font-size: 7px;
-letter-spacing: 0.05em;
-font-weight: 500;
-white-space: nowrap;
-overflow: hidden;
-}
-.bar-start { border-radius: 2px 0 0 2px; }
-.bar-mid   { border-radius: 0; }
-.bar-end   { border-radius: 0 2px 2px 0; }
-.bar-single{ border-radius: 2px; }
-
-/* Assurance type bar colours */
-.bar-ct   { background: rgba(56,189,248,0.25); border: 1px solid rgba(56,189,248,0.5);  color: var(–ct);  }
-.bar-att  { background: rgba(74,222,128,0.22); border: 1px solid rgba(74,222,128,0.5);  color: var(–att); }
-.bar-tr   { background: rgba(251,146,60,0.22); border: 1px solid rgba(251,146,60,0.5);  color: var(–tr);  }
-.bar-aud  { background: rgba(244,63,94,0.22);  border: 1px solid rgba(244,63,94,0.5);   color: var(–aud); }
-.bar-mon  { background: rgba(192,132,252,0.2); border: 1px solid rgba(192,132,252,0.4); color: var(–mon); }
-.bar-crev { background: rgba(250,204,21,0.18); border: 1px solid rgba(250,204,21,0.4);  color: var(–crev);}
-.bar-reg  { background: rgba(103,232,249,0.18);border: 1px solid rgba(103,232,249,0.4); color: var(–reg); }
-
-.diamond {
-width: 10px; height: 10px;
-transform: rotate(45deg);
-border-radius: 1px;
-position: absolute;
-left: 50%;
-top: 50%;
-translate: -50% -50%;
-}
-
-/* ── SUMMARY PANELS ── */
-.summary-grid {
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 16px;
-}
-.summary-card {
-background: var(–surface);
-border: 1px solid var(–border);
-border-radius: 8px;
-padding: 20px;
-position: relative;
-overflow: hidden;
-}
-.summary-card::before {
-content: ‘’;
-position: absolute;
-top: 0; left: 0; right: 0;
-height: 2px;
-}
-.card-amber::before { background: var(–amber); }
-.card-teal::before  { background: var(–teal); }
-.card-violet::before{ background: var(–violet); }
-.card-rose::before  { background: var(–rose); }
-
-.card-num {
-font-family: ‘Fraunces’, serif;
-font-size: 40px;
-font-weight: 300;
-line-height: 1;
-margin-bottom: 4px;
-}
-.card-amber .card-num { color: var(–amber); }
-.card-teal  .card-num { color: var(–teal);  }
-.card-violet.card-num { color: var(–violet); }
-.card-rose  .card-num { color: var(–rose);   }
-.card-violet .card-num { color: var(–violet); }
-
-.card-label {
-font-size: 11px;
-color: var(–text-secondary);
-margin-bottom: 12px;
-}
-.card-breakdown {
-display: flex;
-flex-direction: column;
-gap: 5px;
-}
-.breakdown-row {
-display: flex;
-justify-content: space-between;
-align-items: center;
-font-size: 10px;
-color: var(–text-muted);
-}
-.breakdown-val {
-font-family: ‘DM Mono’, monospace;
-font-size: 10px;
-color: var(–text-secondary);
-}
-
-/* ── HEATMAP ── */
-.heatmap-grid {
-display: grid;
-grid-template-columns: 120px repeat(8, 1fr);
-gap: 2px;
-}
-.hm-cell {
-padding: 8px 6px;
-border-radius: 3px;
-font-size: 10px;
-text-align: center;
-font-family: ‘DM Mono’, monospace;
-}
-.hm-header {
-font-size: 9px;
-letter-spacing: 0.1em;
-color: var(–text-muted);
-text-transform: uppercase;
-display: flex;
-align-items: center;
-justify-content: center;
-padding: 4px;
-}
-.hm-label {
-font-size: 9px;
-color: var(–text-secondary);
-text-align: right;
-display: flex;
-align-items: center;
-justify-content: flex-end;
-padding-right: 8px;
-}
-.hm-val {
-border-radius: 3px;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 10px;
-font-family: ‘DM Mono’, monospace;
-min-height: 32px;
-font-weight: 500;
-}
-.hm-0  { background: var(–surface2); color: var(–text-muted); }
-.hm-1  { background: rgba(45,212,191,0.1);  color: var(–teal); }
-.hm-2  { background: rgba(45,212,191,0.2);  color: var(–teal); }
-.hm-3  { background: rgba(240,165,0,0.2);   color: var(–amber); }
-.hm-4  { background: rgba(240,165,0,0.35);  color: var(–amber); }
-.hm-5  { background: rgba(244,63,94,0.25);  color: var(–rose); }
-.hm-6  { background: rgba(244,63,94,0.4);   color: var(–rose); }
-
-/* ── RISK REGISTER STRIP ── */
-.risk-strip {
-display: flex;
-gap: 10px;
-flex-wrap: wrap;
-}
-.risk-card {
-background: var(–surface);
-border: 1px solid var(–border);
-border-radius: 6px;
-padding: 14px 16px;
-flex: 1;
-min-width: 180px;
-}
-.risk-card-tag {
-font-family: ‘DM Mono’, monospace;
-font-size: 8px;
-letter-spacing: 0.15em;
-text-transform: uppercase;
-color: var(–text-muted);
-margin-bottom: 8px;
-}
-.risk-card-title {
-font-size: 12px;
-font-weight: 500;
-color: var(–text-primary);
-margin-bottom: 6px;
-}
-.risk-card-body {
-font-size: 10px;
-color: var(–text-muted);
-line-height: 1.5;
-}
-
-/* ── FOOTER ── */
-.footer {
-background: var(–surface);
-border-top: 1px solid var(–border);
-padding: 16px 40px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-}
-.footer-text {
-font-family: ‘DM Mono’, monospace;
-font-size: 9px;
-letter-spacing: 0.1em;
-color: var(–text-muted);
-}
-.footer-logo {
-font-family: ‘Fraunces’, serif;
-font-size: 13px;
-color: var(–amber);
-font-weight: 600;
-letter-spacing: 0.05em;
-}
-
-/* ── TABS ── */
-.tabs {
-display: flex;
-gap: 0;
-border-bottom: 1px solid var(–border);
-margin-bottom: 20px;
-}
-.tab {
-padding: 10px 20px;
-font-family: ‘DM Mono’, monospace;
-font-size: 10px;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-color: var(–text-muted);
-border-bottom: 2px solid transparent;
-cursor: pointer;
-transition: all 0.2s;
-margin-bottom: -1px;
-}
-.tab:hover { color: var(–text-secondary); }
-.tab.active { color: var(–amber); border-bottom-color: var(–amber); }
-
-/* ── SCROLL ── */
-.gantt-scroll-wrapper {
-overflow-x: auto;
-overflow-y: visible;
-}
-.gantt-inner {
-min-width: 1400px;
-}
-
-.view-section { display: none; }
-.view-section.active { display: block; }
-
-/* Tooltip */
-.tooltip {
-position: fixed;
-background: var(–surface3);
-border: 1px solid var(–border-light);
-border-radius: 6px;
-padding: 10px 14px;
-font-size: 11px;
-color: var(–text-primary);
-pointer-events: none;
-z-index: 9999;
-display: none;
-max-width: 220px;
-line-height: 1.6;
-box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-}
-.tooltip-title { font-weight: 600; margin-bottom: 4px; font-family: ‘Fraunces’, serif; }
-.tooltip-meta { font-family: ‘DM Mono’, monospace; font-size: 9px; color: var(–text-muted); }
-
-/* Responsive compact */
-@media (max-width: 900px) {
-.main { padding: 16px; }
-.header { padding: 16px; }
-.summary-grid { grid-template-columns: repeat(2,1fr); }
-}
-
-.separator-year {
-border-right: 2px solid var(–border-light) !important;
-}
-
-.period-marker {
-position: absolute;
-top: 0; bottom: 0; width: 2px;
-background: var(–amber);
-opacity: 0.4;
-pointer-events: none;
-}
-
-.collapsible-body { }
-.collapsed .collapsible-body { display: none; }
-
-.chevron {
-font-size: 10px;
-color: var(–text-muted);
-transition: transform 0.2s;
-margin-right: 6px;
-}
-.collapsed .chevron { transform: rotate(-90deg); }
-
-.sticky-col {
-position: sticky;
-left: 0;
-background: var(–surface);
-z-index: 20;
-}
-.sticky-col2 {
-position: sticky;
-left: 220px;
-background: var(–surface);
-z-index: 20;
-}
-
-.today-line {
-position: absolute;
-top: 0; bottom: 0;
-width: 2px;
-background: var(–amber);
-opacity: 0.6;
-z-index: 5;
-pointer-events: none;
-}
-</style>
-
+    @media(max-width:900px){
+      .masthead-title{font-size:32px;}
+      .main,.nav,.footer{padding-left:20px;padding-right:20px;}
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- TOOLTIP -->
-
-<div class="tooltip" id="tooltip">
-  <div class="tooltip-title" id="tt-title"></div>
-  <div id="tt-body"></div>
-</div>
-
-<!-- HEADER -->
-
-<div class="header">
-  <div class="header-inner">
-    <div class="header-left">
-      <div class="eyebrow">Tier 1 NZ Bank · Compliance & Assurance · Confidential</div>
-      <div class="header-title">3-Year Integrated Compliance Assurance Plan</div>
-      <div class="header-sub">FY2025–FY2027 · All Lines of Defence · 8 Legislative Regimes</div>
-    </div>
-    <div class="header-meta">
-      <div class="meta-chip">FY2025 – FY2027</div>
-      <div class="meta-chip">v2.1 DRAFT</div>
-      <div class="status-live"><div class="pulse"></div> LIVE PLAN</div>
-    </div>
+<div class="masthead">
+  <div class="masthead-kicker">Tier 1 NZ Bank · Risk & Compliance · Confidential · v3.0</div>
+  <div class="masthead-title">3-Year Integrated<br><span>Compliance Assurance Plan</span></div>
+  <div class="masthead-sub">FY2026–FY2028 · Quarterly Assurance View</div>
+  <div class="masthead-chips">
+    <div class="chip chip-gold">FY2026–FY2028</div>
+    <div class="chip chip-rose">8 Tier 1 Regimes</div>
+    <div class="chip chip-teal">7 Tier 2 Regimes</div>
+    <div class="chip">3 Lines of Defence</div>
   </div>
 </div>
 
-<!-- MAIN -->
+<div class="nav">
+  <div class="nav-tab active" onclick="switchTab('plan')">Quarterly Plan</div>
+  <div class="nav-tab" onclick="switchTab('summary')">Summary</div>
+  <div class="nav-tab" onclick="switchTab('governance')">Governance</div>
+</div>
 
 <div class="main">
-
-  <!-- TABS -->
-
-  <div class="tabs">
-    <div class="tab active" onclick="switchTab('gantt')">Assurance Gantt</div>
-    <div class="tab" onclick="switchTab('heatmap')">Coverage Heatmap</div>
-    <div class="tab" onclick="switchTab('summary')">Plan Summary</div>
-    <div class="tab" onclick="switchTab('governance')">Governance & Notes</div>
+  <div id="view-plan" class="view active">
+    <div class="section-title">Quarterly Assurance Activity Plan</div>
+    <div id="tier1-container"></div>
   </div>
 
-  <!-- ═══════════════════════════════════════
-       TAB 1: GANTT
-  ════════════════════════════════════════ -->
-
-  <div id="tab-gantt" class="view-section active">
-
-```
-<!-- LEGEND -->
-<div class="legend-bar" style="margin-bottom:20px;">
-  <div class="legend-section">
-    <div class="legend-label">Lines of Defence</div>
-    <div class="legend-items">
-      <div class="legend-item"><div class="legend-line" style="background:var(--l1)"></div> Line 1 — Business / Front Office</div>
-      <div class="legend-item"><div class="legend-line" style="background:var(--l2)"></div> Line 2 — Compliance / Risk</div>
-      <div class="legend-item"><div class="legend-line" style="background:var(--l3)"></div> Line 3 — Internal Audit</div>
-    </div>
+  <div id="view-summary" class="view">
+    <div class="section-title">Plan Summary</div>
+    <p style="color:var(--mid)">Summary content placeholder</p>
   </div>
-  <div class="legend-section">
-    <div class="legend-label">Assurance Activity Type</div>
-    <div class="legend-items">
-      <div class="legend-item"><div class="legend-dot" style="background:var(--ct)"></div>Controls Testing</div>
-      <div class="legend-item"><div class="legend-dot" style="background:var(--att)"></div>Attestation</div>
-      <div class="legend-item"><div class="legend-dot" style="background:var(--tr)"></div>Thematic Review</div>
-      <div class="legend-item"><div class="legend-dot" style="background:var(--aud)"></div>Audit</div>
-      <div class="legend-item"><div class="legend-dot" style="background:var(--mon)"></div>Monitoring</div>
-      <div class="legend-item"><div class="legend-dot" style="background:var(--crev)"></div>Compliance Review</div>
-      <div class="legend-item"><div class="legend-dot" style="background:var(--reg)"></div>Regulatory Engagement</div>
-    </div>
+
+  <div id="view-governance" class="view">
+    <div class="section-title">Governance & Definitions</div>
+    <p style="color:var(--mid)">Governance content placeholder</p>
   </div>
 </div>
-
-<!-- GANTT -->
-<div class="plan-container">
-  <div class="gantt-scroll-wrapper">
-    <div class="gantt-inner" id="gantt-root"></div>
-  </div>
-</div>
-```
-
-  </div><!-- /tab-gantt -->
-
-  <!-- ═══════════════════════════════════════
-       TAB 2: HEATMAP
-  ════════════════════════════════════════ -->
-
-  <div id="tab-heatmap" class="view-section">
-    <div class="section-hd">
-      <div class="section-title">Assurance Coverage Heatmap</div>
-      <div class="section-rule"></div>
-      <div class="section-badge">Activities per Legislation × LoD</div>
-    </div>
-    <div class="plan-container" style="padding:24px;">
-      <div id="heatmap-root"></div>
-    </div>
-
-```
-<div style="margin-top:24px;">
-  <div class="section-hd">
-    <div class="section-title">Assurance Type Distribution by Legislation</div>
-    <div class="section-rule"></div>
-  </div>
-  <div class="plan-container" style="padding:24px;">
-    <div id="dist-root"></div>
-  </div>
-</div>
-```
-
-  </div>
-
-  <!-- ═══════════════════════════════════════
-       TAB 3: SUMMARY
-  ════════════════════════════════════════ -->
-
-  <div id="tab-summary" class="view-section">
-    <div class="section-hd">
-      <div class="section-title">Plan-Level Metrics</div>
-      <div class="section-rule"></div>
-      <div class="section-badge">3-Year Totals</div>
-    </div>
-    <div class="summary-grid">
-      <div class="summary-card card-amber">
-        <div class="card-num">127</div>
-        <div class="card-label">Total Assurance Activities</div>
-        <div class="card-breakdown">
-          <div class="breakdown-row"><span>FY2025</span><span class="breakdown-val">38</span></div>
-          <div class="breakdown-row"><span>FY2026</span><span class="breakdown-val">46</span></div>
-          <div class="breakdown-row"><span>FY2027</span><span class="breakdown-val">43</span></div>
-        </div>
-      </div>
-      <div class="summary-card card-teal">
-        <div class="card-num" style="color:var(--teal)">8</div>
-        <div class="card-label">Legislative Regimes Covered</div>
-        <div class="card-breakdown">
-          <div class="breakdown-row"><span>Critical risk</span><span class="breakdown-val">3</span></div>
-          <div class="breakdown-row"><span>High risk</span><span class="breakdown-val">3</span></div>
-          <div class="breakdown-row"><span>Medium risk</span><span class="breakdown-val">2</span></div>
-        </div>
-      </div>
-      <div class="summary-card card-violet">
-        <div class="card-num" style="color:var(--violet)">7</div>
-        <div class="card-label">Assurance Activity Types</div>
-        <div class="card-breakdown">
-          <div class="breakdown-row"><span>Controls Testing</span><span class="breakdown-val">29</span></div>
-          <div class="breakdown-row"><span>Attestations</span><span class="breakdown-val">24</span></div>
-          <div class="breakdown-row"><span>Thematic Reviews</span><span class="breakdown-val">18</span></div>
-          <div class="breakdown-row"><span>Audit</span><span class="breakdown-val">16</span></div>
-          <div class="breakdown-row"><span>Monitoring</span><span class="breakdown-val">22</span></div>
-          <div class="breakdown-row"><span>Compliance Reviews</span><span class="breakdown-val">12</span></div>
-          <div class="breakdown-row"><span>Regulatory Engagement</span><span class="breakdown-val">6</span></div>
-        </div>
-      </div>
-      <div class="summary-card card-rose">
-        <div class="card-num" style="color:var(--rose)">3</div>
-        <div class="card-label">Lines of Defence Integrated</div>
-        <div class="card-breakdown">
-          <div class="breakdown-row"><span>Line 1 activities</span><span class="breakdown-val">45</span></div>
-          <div class="breakdown-row"><span>Line 2 activities</span><span class="breakdown-val">52</span></div>
-          <div class="breakdown-row"><span>Line 3 activities</span><span class="breakdown-val">30</span></div>
-        </div>
-      </div>
-    </div>
-
-```
-<!-- Key milestones -->
-<div style="margin-top:24px;">
-<div class="section-hd">
-  <div class="section-title">Key Regulatory Milestones & Dependencies</div>
-  <div class="section-rule"></div>
-</div>
-<div class="risk-strip">
-  <div class="risk-card">
-    <div class="risk-card-tag">AML/CFT · Q2 2025</div>
-    <div class="risk-card-title">AML/CFT Amendment Act — Phase 2</div>
-    <div class="risk-card-body">Beneficial ownership registry changes and enhanced due diligence thresholds. Line 2 thematic review scheduled Q1 2025 to pre-empt.</div>
-  </div>
-  <div class="risk-card">
-    <div class="risk-card-tag">CoFI · Q1 2026</div>
-    <div class="risk-card-title">CoFI Full Implementation Deadline</div>
-    <div class="risk-card-body">Fair conduct programme operational. Board attestation due. L2 compliance review H2 2025 + L3 audit Q1 2026.</div>
-  </div>
-  <div class="risk-card">
-    <div class="risk-card-tag">DTA · Q3 2025</div>
-    <div class="risk-card-title">Deposit Takers Act — Deposit Insurance Scheme</div>
-    <div class="risk-card-body">RBNZ licensed deposit takers framework. Controls testing commences Q1 2025. Full audit Q3 2025.</div>
-  </div>
-  <div class="risk-card">
-    <div class="risk-card-tag">CRD · Annual</div>
-    <div class="risk-card-title">Climate Disclosure Annual Report Cycle</div>
-    <div class="risk-card-body">XRB-mandated reporting. L1 attestation → L2 review → External assurance each cycle. First required FY2025.</div>
-  </div>
-  <div class="risk-card">
-    <div class="risk-card-tag">FMCA · Q4 2026</div>
-    <div class="risk-card-title">FMC Act — Conduct Review Cycle</div>
-    <div class="risk-card-body">FMA focus on wholesale conduct and product governance. Thematic review Q2 2026 ahead of FMA supervision cycle.</div>
-  </div>
-  <div class="risk-card">
-    <div class="risk-card-tag">CCCFA · Ongoing</div>
-    <div class="risk-card-title">CCCFA Reform Monitoring</div>
-    <div class="risk-card-body">Post-amendment affordability assessment monitoring. Quarterly L1 monitoring; bi-annual L2 controls testing throughout plan.</div>
-  </div>
-</div>
-</div>
-```
-
-  </div>
-
-  <!-- ═══════════════════════════════════════
-       TAB 4: GOVERNANCE
-  ════════════════════════════════════════ -->
-
-  <div id="tab-governance" class="view-section">
-    <div class="section-hd">
-      <div class="section-title">Plan Governance & Operating Model</div>
-      <div class="section-rule"></div>
-    </div>
-
-```
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-  <div class="plan-container" style="padding:24px;">
-    <div style="font-family:'Fraunces',serif;font-size:14px;margin-bottom:16px;color:var(--text-primary)">Assurance Activity Definitions</div>
-    <div style="display:flex;flex-direction:column;gap:12px;">
-      <div class="legend-item" style="align-items:flex-start;gap:10px;font-size:11px;">
-        <div class="legend-dot" style="background:var(--ct);margin-top:2px;flex-shrink:0"></div>
-        <div><strong style="color:var(--ct)">Controls Testing</strong><br><span style="color:var(--text-muted)">Detailed testing of control design and operating effectiveness against defined control standards. Typically quarterly or semi-annual.</span></div>
-      </div>
-      <div class="legend-item" style="align-items:flex-start;gap:10px;font-size:11px;">
-        <div class="legend-dot" style="background:var(--att);margin-top:2px;flex-shrink:0"></div>
-        <div><strong style="color:var(--att)">Attestation</strong><br><span style="color:var(--text-muted)">Formal sign-off by accountable executives confirming compliance with obligations. Required for Board reporting and regulatory submissions.</span></div>
-      </div>
-      <div class="legend-item" style="align-items:flex-start;gap:10px;font-size:11px;">
-        <div class="legend-dot" style="background:var(--tr);margin-top:2px;flex-shrink:0"></div>
-        <div><strong style="color:var(--tr)">Thematic Review</strong><br><span style="color:var(--text-muted)">Deep-dive L2 review of a specific regulatory theme or risk area. Risk-based and forward-looking. Typically 6–8 week engagements.</span></div>
-      </div>
-      <div class="legend-item" style="align-items:flex-start;gap:10px;font-size:11px;">
-        <div class="legend-dot" style="background:var(--aud);margin-top:2px;flex-shrink:0"></div>
-        <div><strong style="color:var(--aud)">Internal Audit</strong><br><span style="color:var(--text-muted)">Independent L3 assurance. Provides rated opinions on governance, control environment and risk management. Reports to Audit Committee.</span></div>
-      </div>
-      <div class="legend-item" style="align-items:flex-start;gap:10px;font-size:11px;">
-        <div class="legend-dot" style="background:var(--mon);margin-top:2px;flex-shrink:0"></div>
-        <div><strong style="color:var(--mon)">Ongoing Monitoring</strong><br><span style="color:var(--text-muted)">Continuous or periodic L1/L2 monitoring using automated or manual indicators. Feeds into compliance dashboard and KRI reporting.</span></div>
-      </div>
-      <div class="legend-item" style="align-items:flex-start;gap:10px;font-size:11px;">
-        <div class="legend-dot" style="background:var(--crev);margin-top:2px;flex-shrink:0"></div>
-        <div><strong style="color:var(--crev)">Compliance Review</strong><br><span style="color:var(--text-muted)">L2 review of specific processes, documentation or obligations against regulatory requirements. Lighter than thematic; often triggered by regulatory change.</span></div>
-      </div>
-      <div class="legend-item" style="align-items:flex-start;gap:10px;font-size:11px;">
-        <div class="legend-dot" style="background:var(--reg);margin-top:2px;flex-shrink:0"></div>
-        <div><strong style="color:var(--reg)">Regulatory Engagement</strong><br><span style="color:var(--text-muted)">Planned interactions with RBNZ, FMA, DIA or other regulators. Includes supervision visits, self-assessments submitted and formal consultations.</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div style="display:flex;flex-direction:column;gap:16px;">
-    <div class="plan-container" style="padding:24px;">
-      <div style="font-family:'Fraunces',serif;font-size:14px;margin-bottom:14px;color:var(--text-primary)">Plan Governance Framework</div>
-      <div style="display:flex;flex-direction:column;gap:10px;font-size:11px;color:var(--text-secondary)">
-        <div style="display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--amber);font-family:'DM Mono',monospace;font-size:9px;margin-top:2px;flex-shrink:0">OWNER</span><span>Chief Compliance Officer — plan ownership, Board Audit & Risk Committee reporting, annual refresh sign-off.</span></div>
-        <div style="display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--teal);font-family:'DM Mono',monospace;font-size:9px;margin-top:2px;flex-shrink:0">REVIEW</span><span>Quarterly Plan Review Committee (CRO, CCO, Head of Audit, BU Risk Leads) — reprioritise activities against emerging risk, regulatory change and resource capacity.</span></div>
-        <div style="display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--violet);font-family:'DM Mono',monospace;font-size:9px;margin-top:2px;flex-shrink:0">REPORT</span><span>Board Audit & Risk Committee — quarterly pack including plan status, findings heat, overdue actions and regulatory horizon.</span></div>
-        <div style="display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--rose);font-family:'DM Mono',monospace;font-size:9px;margin-top:2px;flex-shrink:0">REFRESH</span><span>Annual plan refresh each September for the following FY, incorporating RBNZ/FMA regulatory work programme, internal audit universe, and emerging legislative change.</span></div>
-      </div>
-    </div>
-    <div class="plan-container" style="padding:24px;">
-      <div style="font-family:'Fraunces',serif;font-size:14px;margin-bottom:14px;color:var(--text-primary)">Regulators & Key Interfaces</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:10px;">
-        <div style="background:var(--surface2);border-radius:4px;padding:10px;">
-          <div style="color:var(--amber);font-family:'DM Mono',monospace;font-size:9px;margin-bottom:4px">RBNZ</div>
-          <div style="color:var(--text-secondary)">Prudential supervisor. DTA, Contracts of Insurance, H&S. Annual supervision schedule.</div>
-        </div>
-        <div style="background:var(--surface2);border-radius:4px;padding:10px;">
-          <div style="color:var(--teal);font-family:'DM Mono',monospace;font-size:9px;margin-bottom:4px">FMA</div>
-          <div style="color:var(--text-secondary)">Conduct regulator. CoFI, FMCA, CCCFA, CRD. Theme-based supervision cycles.</div>
-        </div>
-        <div style="background:var(--surface2);border-radius:4px;padding:10px;">
-          <div style="color:var(--violet);font-family:'DM Mono',monospace;font-size:9px;margin-bottom:4px">DIA</div>
-          <div style="color:var(--text-secondary)">AML/CFT supervisor. Annual reporting, on-site examination programme.</div>
-        </div>
-        <div style="background:var(--surface2);border-radius:4px;padding:10px;">
-          <div style="color:var(--rose);font-family:'DM Mono',monospace;font-size:9px;margin-bottom:4px">XRB / MfE</div>
-          <div style="color:var(--text-secondary)">Climate standards setter. CRD mandatory reporting framework. Annual cycle.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-```
-
-  </div>
-
-</div><!-- /main -->
-
-<!-- FOOTER -->
 
 <div class="footer">
-  <div class="footer-text">CONFIDENTIAL — FOR INTERNAL USE ONLY · Generated: May 2025 · Next Review: September 2025</div>
-  <div class="footer-logo">ICAP 3YR</div>
+  <div>CONFIDENTIAL — INTERNAL USE ONLY · FY2026–FY2028</div>
+  <div>ICAP 3YR</div>
 </div>
 
 <script>
-// ══════════════════════════════════════════
-//  DATA MODEL
-// ══════════════════════════════════════════
-
-const MONTHS_PER_YEAR = 12;
-const YEARS = ['FY2025','FY2026','FY2027'];
-
-// Quarters label per month index (0-based within year)
-const QTR = ['Q1','Q1','Q1','Q2','Q2','Q2','Q3','Q3','Q3','Q4','Q4','Q4'];
-const QTR_COLOR = ['q1','q1','q1','q2','q2','q2','q3','q3','q3','q4','q4','q4'];
-const MONTH_SHORT = ['Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun'];
-
-// bar(startMonth 0-based global, durationMonths, type, label)
-// Global month: 0=Jul FY25 ... 35=Jun FY27
-
-function bar(start, dur, type, label='', lod='') {
-  return {start, dur, type, label, lod};
-}
-
-// Activity type metadata
-const TYPES = {
-  ct:   { label:'Controls Testing',    color:'var(--ct)',   cls:'bar-ct'   },
-  att:  { label:'Attestation',         color:'var(--att)',  cls:'bar-att'  },
-  tr:   { label:'Thematic Review',     color:'var(--tr)',   cls:'bar-tr'   },
-  aud:  { label:'Audit',               color:'var(--aud)',  cls:'bar-aud'  },
-  mon:  { label:'Monitoring',          color:'var(--mon)',  cls:'bar-mon'  },
-  crev: { label:'Compliance Review',   color:'var(--crev)', cls:'bar-crev' },
-  reg:  { label:'Reg. Engagement',     color:'var(--reg)',  cls:'bar-reg'  },
-};
-
-const RISK_LEVELS = {
-  critical: { label:'CRITICAL', cls:'risk-critical' },
-  high:     { label:'HIGH',     cls:'risk-high'     },
-  medium:   { label:'MEDIUM',   cls:'risk-medium'   },
-};
-
-// LoD metadata
-const LOD = {
-  '1': { label:'L1', cls:'lod-tag-1', ind:'lod-1' },
-  '2': { label:'L2', cls:'lod-tag-2', ind:'lod-2' },
-  '3': { label:'L3', cls:'lod-tag-3', ind:'lod-3' },
-};
-
-// ══════════════════════════════════════════
-//  LEGISLATION DATA
-// Each legislation has activities per LOD
-// Global month 0 = Jul FY2025
-// ══════════════════════════════════════════
-
-const LEGISLATIONS = [
-  {
-    id:'aml',
-    tag:'AML/CFT',
-    full:'Anti-Money Laundering & Countering Financing of Terrorism Act 2009',
-    risk:'critical',
-    activities: [
-      // LOD 1
-      { lod:'1', name:'AML Programme Self-Assessment', type:'att',  bars:[bar(2,1,'att','Attest'),bar(14,1,'att','Attest'),bar(26,1,'att','Attest')] },
-      { lod:'1', name:'Transaction Monitoring — Ongoing', type:'mon', bars:[bar(0,12,'mon',''),bar(12,12,'mon',''),bar(24,12,'mon','')] },
-      { lod:'1', name:'CDD Quality Controls Testing', type:'ct',  bars:[bar(0,2,'ct','Test'),bar(6,2,'ct','Test'),bar(12,2,'ct','Test'),bar(18,2,'ct','Test'),bar(24,2,'ct','Test'),bar(30,2,'ct','Test')] },
-      // LOD 2
-      { lod:'2', name:'AML Risk Assessment Review', type:'crev', bars:[bar(1,3,'crev','L2 Rev'),bar(13,3,'crev','L2 Rev'),bar(25,3,'crev','L2 Rev')] },
-      { lod:'2', name:'Thematic: Beneficial Ownership', type:'tr',  bars:[bar(0,2,'tr','Thematic')] },
-      { lod:'2', name:'AML Compliance Monitoring', type:'mon', bars:[bar(0,12,'mon',''),bar(12,12,'mon',''),bar(24,12,'mon','')] },
-      { lod:'2', name:'DIA Engagement / Self-Report', type:'reg', bars:[bar(3,1,'reg','DIA'),bar(15,1,'reg','DIA'),bar(27,1,'reg','DIA')] },
-      // LOD 3
-      { lod:'3', name:'AML Full Audit', type:'aud', bars:[bar(9,3,'aud','Audit'),bar(21,3,'aud','Audit'),bar(33,3,'aud','Audit')] },
-      { lod:'3', name:'Targeted STR Process Audit', type:'aud', bars:[bar(6,2,'aud','Targeted')] },
-    ]
-  },
-  {
-    id:'cccfa',
-    tag:'CCCFA',
-    full:'Credit Contracts and Consumer Finance Act 2003 (as amended)',
-    risk:'critical',
-    activities: [
-      { lod:'1', name:'Affordability Assessment Monitoring', type:'mon', bars:[bar(0,12,'mon'),bar(12,12,'mon'),bar(24,12,'mon')] },
-      { lod:'1', name:'Responsible Lending Attestation', type:'att', bars:[bar(2,1,'att','Attest'),bar(14,1,'att','Attest'),bar(26,1,'att','Attest')] },
-      { lod:'2', name:'CCCFA Controls Testing (Bi-Annual)', type:'ct', bars:[bar(0,2,'ct','Test'),bar(6,2,'ct','Test'),bar(12,2,'ct','Test'),bar(18,2,'ct','Test'),bar(24,2,'ct','Test'),bar(30,2,'ct','Test')] },
-      { lod:'2', name:'Thematic: Affordability Reforms Impact', type:'tr', bars:[bar(4,3,'tr','Thematic')] },
-      { lod:'2', name:'CCCFA Annual Compliance Review', type:'crev', bars:[bar(9,2,'crev','L2 Rev'),bar(21,2,'crev','L2 Rev'),bar(33,2,'crev','L2 Rev')] },
-      { lod:'2', name:'FMA Engagement — CCCFA', type:'reg', bars:[bar(5,1,'reg','FMA'),bar(17,1,'reg','FMA')] },
-      { lod:'3', name:'Consumer Lending Audit', type:'aud', bars:[bar(7,3,'aud','Audit'),bar(31,3,'aud','Audit')] },
-    ]
-  },
-  {
-    id:'cofi',
-    tag:'CoFI',
-    full:'Financial Markets (Conduct of Financial Institutions) Act 2022',
-    risk:'critical',
-    activities: [
-      { lod:'1', name:'Fair Conduct Programme — Operationalise', type:'ct', bars:[bar(0,6,'ct','Embed')] },
-      { lod:'1', name:'Staff Training Attestations', type:'att', bars:[bar(5,1,'att','Attest'),bar(11,1,'att','Attest'),bar(17,1,'att','Attest'),bar(23,1,'att','Attest'),bar(29,1,'att','Attest')] },
-      { lod:'1', name:'CoFI Monitoring — Conduct Indicators', type:'mon', bars:[bar(0,12,'mon'),bar(12,12,'mon'),bar(24,12,'mon')] },
-      { lod:'2', name:'CoFI Readiness Review', type:'crev', bars:[bar(1,2,'crev','Rev')] },
-      { lod:'2', name:'Thematic: Product Governance under CoFI', type:'tr', bars:[bar(3,3,'tr','Thematic'),bar(27,3,'tr','Thematic')] },
-      { lod:'2', name:'FCP Compliance Review (Annual)', type:'crev', bars:[bar(8,2,'crev','L2 Rev'),bar(20,2,'crev','L2 Rev'),bar(32,2,'crev','L2 Rev')] },
-      { lod:'2', name:'FMA Supervision Engagement', type:'reg', bars:[bar(13,1,'reg','FMA'),bar(25,1,'reg','FMA')] },
-      { lod:'3', name:'CoFI Full Audit', type:'aud', bars:[bar(11,3,'aud','Audit'),bar(23,3,'aud','Audit')] },
-    ]
-  },
-  {
-    id:'fmca',
-    tag:'FMCA',
-    full:'Financial Markets Conduct Act 2013',
-    risk:'high',
-    activities: [
-      { lod:'1', name:'Product Disclosure Attestation', type:'att', bars:[bar(2,1,'att'),bar(14,1,'att'),bar(26,1,'att')] },
-      { lod:'1', name:'Wholesale Conduct Monitoring', type:'mon', bars:[bar(0,12,'mon'),bar(12,12,'mon'),bar(24,12,'mon')] },
-      { lod:'2', name:'FMCA Controls Testing', type:'ct', bars:[bar(1,2,'ct'),bar(13,2,'ct'),bar(25,2,'ct')] },
-      { lod:'2', name:'Thematic: Wholesale Conduct & FMCA', type:'tr', bars:[bar(15,3,'tr','Thematic')] },
-      { lod:'2', name:'FMCA Compliance Review', type:'crev', bars:[bar(8,2,'crev'),bar(32,2,'crev')] },
-      { lod:'3', name:'FMCA / Wholesale Banking Audit', type:'aud', bars:[bar(18,3,'aud','Audit')] },
-    ]
-  },
-  {
-    id:'coi',
-    tag:'Contracts of Insurance',
-    full:'Contracts of Insurance Act 2024',
-    risk:'high',
-    activities: [
-      { lod:'1', name:'Insurance Product Review & Attestation', type:'att', bars:[bar(3,1,'att'),bar(15,1,'att'),bar(27,1,'att')] },
-      { lod:'1', name:'Bancassurance Conduct Monitoring', type:'mon', bars:[bar(0,12,'mon'),bar(12,12,'mon'),bar(24,12,'mon')] },
-      { lod:'2', name:'CoI Controls Testing', type:'ct', bars:[bar(2,2,'ct'),bar(14,2,'ct'),bar(26,2,'ct')] },
-      { lod:'2', name:'Thematic: Disclosure & Utmost Good Faith', type:'tr', bars:[bar(6,3,'tr','Thematic')] },
-      { lod:'2', name:'RBNZ Engagement — Insurance Supervision', type:'reg', bars:[bar(4,1,'reg'),bar(28,1,'reg')] },
-      { lod:'3', name:'Insurance Act Audit', type:'aud', bars:[bar(21,3,'aud','Audit')] },
-    ]
-  },
-  {
-    id:'hsaw',
-    tag:'H&S at Work',
-    full:'Health and Safety at Work Act 2015',
-    risk:'medium',
-    activities: [
-      { lod:'1', name:'PCBU Obligations — Annual Attestation', type:'att', bars:[bar(2,1,'att'),bar(14,1,'att'),bar(26,1,'att')] },
-      { lod:'1', name:'Hazard & Incident Monitoring', type:'mon', bars:[bar(0,12,'mon'),bar(12,12,'mon'),bar(24,12,'mon')] },
-      { lod:'2', name:'H&S Controls Review (Annual)', type:'crev', bars:[bar(3,2,'crev'),bar(15,2,'crev'),bar(27,2,'crev')] },
-      { lod:'2', name:'Thematic: Psychosocial Risk', type:'tr', bars:[bar(9,3,'tr','Thematic')] },
-      { lod:'3', name:'H&S Assurance Audit', type:'aud', bars:[bar(33,3,'aud','Audit')] },
-    ]
-  },
-  {
-    id:'dta',
-    tag:'Deposit Takers Act',
-    full:'Deposit Takers Act 2023 (incl. Deposit Insurance Scheme)',
-    risk:'high',
-    activities: [
-      { lod:'1', name:'DTA Operational Controls — Monitoring', type:'mon', bars:[bar(0,12,'mon'),bar(12,12,'mon'),bar(24,12,'mon')] },
-      { lod:'1', name:'Depositor Disclosure Attestation', type:'att', bars:[bar(2,1,'att'),bar(14,1,'att'),bar(26,1,'att')] },
-      { lod:'2', name:'DTA Controls Testing (Bi-Annual)', type:'ct', bars:[bar(0,2,'ct'),bar(6,2,'ct'),bar(12,2,'ct'),bar(18,2,'ct'),bar(24,2,'ct'),bar(30,2,'ct')] },
-      { lod:'2', name:'Thematic: Deposit Insurance Readiness', type:'tr', bars:[bar(1,3,'tr','Thematic')] },
-      { lod:'2', name:'RBNZ Prudential Engagement', type:'reg', bars:[bar(5,1,'reg'),bar(17,1,'reg'),bar(29,1,'reg')] },
-      { lod:'3', name:'DTA Full Audit', type:'aud', bars:[bar(8,3,'aud','Audit'),bar(32,3,'aud','Audit')] },
-    ]
-  },
-  {
-    id:'crd',
-    tag:'Climate Disclosures',
-    full:'Financial Sector (Climate-related Disclosures and Other Matters) Amendment Act 2021',
-    risk:'medium',
-    activities: [
-      { lod:'1', name:'Climate Metrics — Data Monitoring', type:'mon', bars:[bar(0,12,'mon'),bar(12,12,'mon'),bar(24,12,'mon')] },
-      { lod:'1', name:'CRD Annual Board Attestation', type:'att', bars:[bar(8,1,'att','Attest'),bar(20,1,'att','Attest'),bar(32,1,'att','Attest')] },
-      { lod:'2', name:'CRD Compliance Review (Annual)', type:'crev', bars:[bar(6,2,'crev'),bar(18,2,'crev'),bar(30,2,'crev')] },
-      { lod:'2', name:'Thematic: Scope 3 / Transition Risk', type:'tr', bars:[bar(16,3,'tr','Thematic')] },
-      { lod:'2', name:'XRB / MfE Regulatory Engagement', type:'reg', bars:[bar(9,1,'reg'),bar(21,1,'reg'),bar(33,1,'reg')] },
-      { lod:'3', name:'Climate Disclosure Audit', type:'aud', bars:[bar(10,2,'aud','Audit'),bar(22,2,'aud','Audit'),bar(34,2,'aud','Audit')] },
-    ]
-  },
-];
-
-// ══════════════════════════════════════════
-//  RENDER GANTT
-// ══════════════════════════════════════════
-
-function buildGantt() {
-  const root = document.getElementById('gantt-root');
-  root.innerHTML = '';
-
-  // Year / quarter / month headers
-  const yearRow = document.createElement('div');
-  yearRow.style.cssText = 'display:grid;grid-template-columns:220px 90px repeat(36,1fr);background:var(--surface3);border-bottom:1px solid var(--border);position:sticky;top:82px;z-index:51;';
-
-  // Legislation + Risk cols
-  const blankCell = (text='', extra='') => `<div style="border-right:1px solid var(--border);padding:6px 10px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);${extra}">${text}</div>`;
-  yearRow.innerHTML = blankCell('Legislation / Activity') + blankCell('Risk / LoD', 'text-align:center;border-right:2px solid var(--border-light);');
-
-  for (let y=0;y<3;y++) {
-    const ycell = document.createElement('div');
-    ycell.style.cssText = `grid-column:span 12;border-right:2px solid var(--border-light);padding:6px 8px;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--amber);letter-spacing:0.15em;text-align:center;background:var(--surface3);`;
-    ycell.textContent = YEARS[y];
-    yearRow.appendChild(ycell);
+  function switchTab(id){
+    const ids=['plan','summary','governance'];
+    document.querySelectorAll('.nav-tab').forEach((t,i)=>t.classList.toggle('active',ids[i]===id));
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    document.getElementById('view-'+id).classList.add('active');
   }
-  root.appendChild(yearRow);
-
-  // Month row
-  const monthRow = document.createElement('div');
-  monthRow.style.cssText = 'display:grid;grid-template-columns:220px 90px repeat(36,1fr);border-bottom:2px solid var(--border);background:var(--surface2);position:sticky;top:120px;z-index:50;';
-  monthRow.innerHTML = blankCell('','') + blankCell('','border-right:2px solid var(--border-light);');
-  for (let m=0;m<36;m++) {
-    const mi = m % 12;
-    const qcls = QTR_COLOR[mi];
-    const isYearEnd = (m % 12 === 11);
-    monthRow.innerHTML += `<div style="border-right:${isYearEnd ? '2px solid var(--border-light)' : '1px solid var(--border)'};padding:5px 2px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.05em;color:${qcls==='q1'?'#60a5fa':qcls==='q2'?'#34d399':qcls==='q3'?'#f59e0b':'#f87171'};text-align:center;">${MONTH_SHORT[mi]}</div>`;
-  }
-  root.appendChild(monthRow);
-
-  // Legislation groups
-  LEGISLATIONS.forEach((leg, li) => {
-    const group = document.createElement('div');
-    group.style.cssText = `border-bottom:2px solid var(--border-light);`;
-
-    // Legislation header row
-    const hrow = document.createElement('div');
-    hrow.style.cssText = `display:grid;grid-template-columns:220px 90px repeat(36,1fr);background:var(--surface2);border-bottom:1px solid var(--border);cursor:pointer;`;
-    hrow.onclick = () => {
-      group.classList.toggle('collapsed');
-    };
-
-    const riskMeta = RISK_LEVELS[leg.risk];
-    hrow.innerHTML = `
-      <div class="sticky-col" style="padding:10px 14px;display:flex;align-items:center;gap:8px;border-right:1px solid var(--border);background:var(--surface2);">
-        <span style="font-size:12px;color:var(--text-muted);">▾</span>
-        <div>
-          <div style="font-family:'Fraunces',serif;font-size:13px;font-weight:600;color:var(--text-primary)">${leg.tag}</div>
-          <div style="font-size:9px;color:var(--text-muted);margin-top:2px">${leg.full.substring(0,55)}…</div>
-        </div>
-      </div>
-      <div class="sticky-col2" style="padding:10px 8px;display:flex;align-items:center;justify-content:center;border-right:2px solid var(--border-light);background:var(--surface2);">
-        <span class="risk-badge ${riskMeta.cls}">${riskMeta.label}</span>
-      </div>
-    `;
-
-    // Empty gantt cells for header row (subtle shading)
-    for (let m=0;m<36;m++) {
-      const isYE = (m%12===11);
-      const cell = document.createElement('div');
-      cell.style.cssText = `border-right:${isYE?'2px solid var(--border-light)':'1px solid var(--border)'};background:rgba(30,37,53,0.3);`;
-      hrow.appendChild(cell);
-    }
-    group.appendChild(hrow);
-
-    // Activity rows
-    const body = document.createElement('div');
-    body.className = 'collapsible-body';
-
-    leg.activities.forEach(act => {
-      const arow = document.createElement('div');
-      arow.style.cssText = `display:grid;grid-template-columns:220px 90px repeat(36,1fr);border-bottom:1px solid rgba(42,51,71,0.5);min-height:32px;`;
-
-      const lodMeta = LOD[act.lod];
-      const typeMeta = TYPES[act.type];
-
-      arow.innerHTML = `
-        <div class="sticky-col" style="padding:5px 14px 5px 24px;display:flex;align-items:center;gap:6px;border-right:1px solid var(--border);background:var(--surface);">
-          <div style="width:3px;border-radius:1px;align-self:stretch;background:var(--l${act.lod});min-height:14px;flex-shrink:0;"></div>
-          <span style="font-size:10px;color:var(--text-secondary);flex:1;">${act.name}</span>
-          <span class="act-type-badge" style="background:${typeMeta.color}22;border:1px solid ${typeMeta.color}66;color:${typeMeta.color};font-family:'DM Mono',monospace;font-size:7px;padding:1px 4px;border-radius:2px;white-space:nowrap;">${typeMeta.label.split(' ')[0]}</span>
-        </div>
-        <div class="sticky-col2" style="padding:5px 8px;display:flex;align-items:center;justify-content:center;border-right:2px solid var(--border-light);background:var(--surface);">
-          <span class="lod-tag ${lodMeta.cls}" style="font-family:'DM Mono',monospace;font-size:8px;padding:2px 5px;border-radius:2px;">${lodMeta.label}</span>
-        </div>
-      `;
-
-      // Build bar lookup: which months are covered
-      const barAtMonth = {};
-      act.bars.forEach(b => {
-        for (let m=b.start; m<b.start+b.dur; m++) {
-          if (!barAtMonth[m]) barAtMonth[m] = b;
-        }
-      });
-
-      for (let m=0;m<36;m++) {
-        const isYE = (m%12===11);
-        const cell = document.createElement('div');
-        cell.style.cssText = `border-right:${isYE?'2px solid var(--border-light)':'1px solid rgba(42,51,71,0.35)'};padding:3px 1px;display:flex;align-items:center;position:relative;`;
-
-        const b = barAtMonth[m];
-        if (b) {
-          const tm = TYPES[b.type];
-          const isStart = (m === b.start);
-          const isEnd   = (m === b.start + b.dur - 1);
-          const barDiv = document.createElement('div');
-          let br = isStart && isEnd ? '3px' : isStart ? '3px 0 0 3px' : isEnd ? '0 3px 3px 0' : '0';
-          barDiv.style.cssText = `height:14px;border-radius:${br};width:100%;background:${tm.color}26;border:1px solid ${tm.color}66;color:${tm.color};display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:6px;font-weight:500;overflow:hidden;`;
-          if (isStart && b.label) barDiv.textContent = b.label;
-          barDiv.title = `${tm.label} — ${act.name}`;
-          barDiv.addEventListener('mouseenter', e => showTooltip(e, tm.label, act.name, YEARS[Math.floor(m/12)], lodMeta.label));
-          barDiv.addEventListener('mousemove', moveTooltip);
-          barDiv.addEventListener('mouseleave', hideTooltip);
-          cell.appendChild(barDiv);
-        }
-        arow.appendChild(cell);
-      }
-
-      body.appendChild(arow);
-    });
-
-    group.appendChild(body);
-    root.appendChild(group);
-  });
-}
-
-// ══════════════════════════════════════════
-//  RENDER HEATMAP
-// ══════════════════════════════════════════
-function buildHeatmap() {
-  const root = document.getElementById('heatmap-root');
-  root.innerHTML = '';
-
-  const legs = LEGISLATIONS.map(l=>l.tag);
-  const lods = ['1','2','3'];
-
-  // Count activities per leg × lod
-  const grid = {};
-  LEGISLATIONS.forEach(leg => {
-    grid[leg.tag] = {total:0};
-    lods.forEach(l => grid[leg.tag][l] = 0);
-    leg.activities.forEach(a => {
-      grid[leg.tag][a.lod]++;
-      grid[leg.tag].total++;
-    });
-  });
-
-  const max = Math.max(...Object.values(grid).map(v=>v.total));
-
-  const container = document.createElement('div');
-  container.style.cssText = 'display:grid;grid-template-columns:180px repeat('+legs.length+',1fr);gap:3px;';
-
-  // Header
-  container.innerHTML = `<div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);padding:6px;display:flex;align-items:flex-end;">Legislation</div>`;
-  legs.forEach(l => {
-    container.innerHTML += `<div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text-secondary);text-align:center;padding:4px 2px;writing-mode:vertical-lr;transform:rotate(180deg);height:90px;display:flex;align-items:center;justify-content:center;">${l}</div>`;
-  });
-
-  // Rows per LoD
-  const lodLabels = {
-    '1': 'Line 1 — Business',
-    '2': 'Line 2 — Compliance',
-    '3': 'Line 3 — Audit',
-    'total': 'TOTAL'
-  };
-
-  [...lods, 'total'].forEach(lod => {
-    container.innerHTML += `<div style="font-size:10px;color:${lod==='1'?'var(--l1)':lod==='2'?'var(--l2)':lod==='3'?'var(--l3)':'var(--text-secondary)'};display:flex;align-items:center;padding:4px 6px;font-family:'DM Mono',monospace;font-weight:${lod==='total'?'600':'400'};border-top:${lod==='total'?'1px solid var(--border)':'none'}">${lodLabels[lod]}</div>`;
-    legs.forEach(l => {
-      const val = grid[l][lod] || 0;
-      const intensity = val===0?0:Math.ceil(val/max*6);
-      container.innerHTML += `<div class="hm-val hm-${intensity}" style="border-top:${lod==='total'?'1px solid var(--border)':'none'}">${val||'—'}</div>`;
-    });
-  });
-
-  root.appendChild(container);
-
-  // Build distribution chart
-  buildDist();
-}
-
-function buildDist() {
-  const root = document.getElementById('dist-root');
-  root.innerHTML = '';
-
-  const typeOrder = ['ct','att','tr','aud','mon','crev','reg'];
-  const counts = {};
-  typeOrder.forEach(t => counts[t]={});
-  LEGISLATIONS.forEach(leg => {
-    typeOrder.forEach(t => counts[t][leg.tag]=0);
-    leg.activities.forEach(a => {
-      counts[a.type][leg.tag] = (counts[a.type][leg.tag]||0) + a.bars.length;
-    });
-  });
-
-  const legs = LEGISLATIONS.map(l=>l.tag);
-  const container = document.createElement('div');
-  container.style.cssText = 'overflow-x:auto;';
-
-  const table = document.createElement('div');
-  table.style.cssText = `display:grid;grid-template-columns:160px repeat(${legs.length},1fr);gap:2px;min-width:800px;`;
-
-  table.innerHTML = `<div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);padding:6px;display:flex;align-items:center;">Activity Type</div>`;
-  legs.forEach(l => {
-    table.innerHTML += `<div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text-secondary);text-align:center;padding:4px;border-bottom:1px solid var(--border);">${l}</div>`;
-  });
-
-  typeOrder.forEach(t => {
-    const tm = TYPES[t];
-    table.innerHTML += `<div style="display:flex;align-items:center;gap:6px;padding:6px;font-size:10px;color:${tm.color};"><span style="width:8px;height:8px;background:${tm.color};border-radius:2px;display:inline-block;flex-shrink:0;"></span>${tm.label}</div>`;
-    legs.forEach(l => {
-      const val = counts[t][l]||0;
-      table.innerHTML += `<div style="display:flex;align-items:center;justify-content:center;background:${val?tm.color+'1a':'var(--surface2)'};border-radius:3px;font-family:'DM Mono',monospace;font-size:10px;color:${val?tm.color:'var(--text-muted)'};min-height:28px;">${val||'—'}</div>`;
-    });
-  });
-
-  container.appendChild(table);
-  root.appendChild(container);
-}
-
-// ══════════════════════════════════════════
-//  TOOLTIP
-// ══════════════════════════════════════════
-const tt = document.getElementById('tooltip');
-function showTooltip(e, type, name, year, lod) {
-  document.getElementById('tt-title').textContent = type;
-  document.getElementById('tt-body').innerHTML = `<div style="color:var(--text-secondary);margin-bottom:4px;">${name}</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);">${year} · ${lod}</div>`;
-  tt.style.display='block';
-  moveTooltip(e);
-}
-function moveTooltip(e) {
-  tt.style.left = (e.clientX+14)+'px';
-  tt.style.top  = (e.clientY-10)+'px';
-}
-function hideTooltip() { tt.style.display='none'; }
-
-// ══════════════════════════════════════════
-//  TABS
-// ══════════════════════════════════════════
-function switchTab(id) {
-  document.querySelectorAll('.tab').forEach((t,i) => {
-    const ids = ['gantt','heatmap','summary','governance'];
-    t.classList.toggle('active', ids[i]===id);
-  });
-  document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
-  document.getElementById('tab-'+id).classList.add('active');
-}
-
-// ══════════════════════════════════════════
-//  INIT
-// ══════════════════════════════════════════
-buildGantt();
-buildHeatmap();
 </script>
 
 </body>
 </html>
-
